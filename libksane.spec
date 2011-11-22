@@ -9,6 +9,7 @@ URL: http://www.kde.org
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/%name-%version.tar.bz2
 BuildRequires: kdelibs4-devel >= 2:%{version}
 BuildRequires: libsane-devel
+BuildRequires: automoc4
 Conflicts: kdegraphics4-core < 2:4.6.90
 
 %description
