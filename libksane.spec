@@ -1,6 +1,6 @@
 Name: libksane
 Summary:  A library for dealing with scanners 
-Version: 4.8.3
+Version: 4.8.4
 Release: 1
 Epoch: 2
 Group: System/Libraries
