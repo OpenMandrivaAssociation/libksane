@@ -1,13 +1,12 @@
-%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	14.12.0
+Version:	4.14.3
 Release:	1
 Epoch:		2
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://www.kde.org
-Source0:	ftp://ftp.kde.org/pub/kde/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	kdelibs4-devel
 BuildRequires:	sane-devel
 BuildRequires:	automoc4
@@ -69,8 +68,8 @@ based on %{name}.
 %makeinstall_std -C build
 
 %changelog
-* Tue Nov 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:14.12.0-1
-- New version 14.12.0
+* Tue Nov 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.14.3-1
+- New version 4.14.3
 
 * Wed Oct 15 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 2:4.14.2-1
 - New version 4.14.2
