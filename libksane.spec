@@ -1,8 +1,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	15.08.0
-Release:	2
+Version:	15.08.1
+Release:	1
 Epoch:		2
 Group:		System/Libraries
 License:	GPLv2
