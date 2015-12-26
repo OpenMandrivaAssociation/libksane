@@ -23,14 +23,10 @@ BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Test)
 Conflicts:	kdegraphics4-core < 2:4.6.90
+Obsoletes:	libksane < 2:15.12.0
 
 %description
 LibKSane is a KDE interface for SANE library to control flat scanner.
-
-%files
-%{_kde_iconsdir}/hicolor/*/actions/black-white.png
-%{_kde_iconsdir}/hicolor/*/actions/color.png
-%{_kde_iconsdir}/hicolor/*/actions/gray-scale.png
 
 #------------------------------------------------
 
@@ -44,7 +40,7 @@ Obsoletes:	%{mklibname ksane 0} < 2:15.12.0
 LibKSane is a KDE interface for SANE library to control flat scanners.
 
 %files -n %{libname}
-%{_kde_libdir}/libKF5Sane.so.%{major}*
+%{_libdir}/libKF5Sane.so.%{major}*
 
 #-----------------------------------------------------------------------------
 
