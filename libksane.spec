@@ -21,6 +21,7 @@ BuildRequires:	cmake(KF5WidgetsAddons)
 BuildRequires:	cmake(KF5TextWidgets)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Test)
 Conflicts:	kdegraphics4-core < 2:4.6.90
 
 %description
