@@ -1,4 +1,8 @@
+%define major 5
+%define libname %mklibname KF5Sane %{major}
+%define devname %mklibname KF5Sane -d
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+
 Summary:	A library for dealing with scanners
 Name:		libksane
 Version:	15.12.0
@@ -8,9 +12,15 @@ Group:		System/Libraries
 License:	GPLv2
 Url:		http://www.kde.org
 Source0:	ftp://ftp.kde.org/pub/kde/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:	kdelibs4-devel
 BuildRequires:	sane-devel
-BuildRequires:	automoc4
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5Wallet)
+BuildRequires:	cmake(KF5WidgetsAddons)
+BuildRequires:	cmake(KF5TextWidgets)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Widgets)
 Conflicts:	kdegraphics4-core < 2:4.6.90
 
 %description
@@ -23,48 +33,46 @@ LibKSane is a KDE interface for SANE library to control flat scanner.
 
 #------------------------------------------------
 
-%define ksane_major 0
-%define libksane %mklibname ksane %{ksane_major}
-
-%package -n %{libksane}
+%package -n %{libname}
 Summary:	A library for dealing with scanners
 Group:		System/Libraries
+Provides:	ksane = %{EVRD}
+Obsoletes:	%{mklibname ksane 0} < 2:15.12.0
 
-%description -n %{libksane}
+%description -n %{libname}
 LibKSane is a KDE interface for SANE library to control flat scanners.
 
-%files -n %{libksane}
-%{_kde_libdir}/libksane.so.%{ksane_major}*
+%files -n %{libname}
+%{_kde_libdir}/libKF5Sane.so.%{major}*
 
 #-----------------------------------------------------------------------------
 
-%package devel
+%package -n %{devname}
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
-Requires:	kdelibs4-devel
 Requires:	sane-devel
-Requires:	%{libksane} = %{EVRD}
+Requires:	%{libname} = %{EVRD}
 Conflicts:	kdegraphics4-devel < 2:4.6.90
+Obsoletes:	%{mklibname ksane -d} < 2:15.12.0
 
-%description devel
+%description  -n %{devname}
 This package contains header files needed if you wish to build applications
 based on %{name}.
 
-%files devel
-%{_kde_includedir}/%{name}
-%{_kde_libdir}/cmake/KSane/KSaneConfig.cmake
-%{_kde_libdir}/libksane.so
-%{_kde_libdir}/pkgconfig/libksane.pc
+%files  -n %{devname}
+%{_includedir}/KF5/KSane
+%{_includedir}/KF5/ksane_version.h
+%{_libdir}/cmake/KF5Sane
+%{_libdir}/*.so
 
 #----------------------------------------------------------------------
 
 %prep
 %setup -q
+%cmake_kde5
 
 %build
-%cmake_kde4 \
-	-DCMAKE_MINIMUM_REQUIRED_VERSION=3.1
-%make
+%ninja -C build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
