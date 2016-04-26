@@ -5,13 +5,13 @@
 
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	15.12.3
+Version:	16.04.0
 Release:	1
 Epoch:		2
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://www.kde.org
-Source0:	ftp://ftp.kde.org/pub/kde/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	sane-devel
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Config)
@@ -28,6 +28,9 @@ Obsoletes:	libksane < 2:15.12.0
 %description
 LibKSane is a KDE interface for SANE library to control flat scanner.
 
+%files
+%{_datadir}/icons/*/*/*/*
+
 #------------------------------------------------
 
 %package -n %{libname}
@@ -35,6 +38,7 @@ Summary:	A library for dealing with scanners
 Group:		System/Libraries
 Provides:	ksane = %{EVRD}
 Obsoletes:	%{mklibname ksane 0} < 2:15.12.0
+Requires:	%{name} = %{EVRD}
 
 %description -n %{libname}
 LibKSane is a KDE interface for SANE library to control flat scanners.
