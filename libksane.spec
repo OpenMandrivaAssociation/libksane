@@ -5,7 +5,7 @@
 
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	17.03.80
+Version:	17.04.0
 Release:	1
 Epoch:		2
 Group:		System/Libraries
@@ -28,7 +28,7 @@ Obsoletes:	libksane < 2:15.12.0
 %description
 LibKSane is a KDE interface for SANE library to control flat scanner.
 
-%files
+%files -f libksane.lang
 %{_datadir}/icons/*/*/*/*
 
 #------------------------------------------------
@@ -77,3 +77,4 @@ based on %{name}.
 
 %install
 %ninja_install -C build
+%find_lang libksane
