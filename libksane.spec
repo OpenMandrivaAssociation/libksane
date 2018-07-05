@@ -5,9 +5,8 @@
 
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	 18.04.2
-Release:	1
-Epoch:		2
+Version:	18.04.2
+Release:	2
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://www.kde.org
@@ -23,8 +22,7 @@ BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Test)
 Conflicts:	kdegraphics4-core < 2:4.6.90
-Obsoletes:	libksane < 2:15.12.0
-Obsoletes:	libksane0 < 2:18.04.2
+Obsoletes:	libksane0 < 3:18.04.2
 
 %description
 LibKSane is a KDE interface for SANE library to control flat scanner.
@@ -38,7 +36,7 @@ LibKSane is a KDE interface for SANE library to control flat scanner.
 Summary:	A library for dealing with scanners
 Group:		System/Libraries
 Provides:	ksane = %{EVRD}
-Obsoletes:	%{mklibname ksane 0} < 2:15.12.0
+Obsoletes:	%{mklibname ksane 0} < 3:15.12.0
 Requires:	%{name} = %{EVRD}
 
 %description -n %{libname}
@@ -55,7 +53,7 @@ Group:		Development/KDE and Qt
 Requires:	sane-devel
 Requires:	%{libname} = %{EVRD}
 Conflicts:	kdegraphics4-devel < 2:4.6.90
-Obsoletes:	%{mklibname ksane -d} < 2:15.12.0
+Obsoletes:	%{mklibname ksane -d} < 3:15.12.0
 
 %description  -n %{devname}
 This package contains header files needed if you wish to build applications
