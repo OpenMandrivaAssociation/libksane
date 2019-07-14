@@ -1,4 +1,2 @@
-removed_sources:
-  libksane-17.12.1.tar.xz: 4da462ecbe9ed233745446b4db1df9ac3d3ca7b9
 sources:
-  libksane-19.04.2.tar.xz: 98ac0c8d7fb8036626390bed3bb3d4f2f57e7911
+  libksane-19.04.3.tar.xz: b92e625b4131a757bfb64c89733328bdd03b9cbf
