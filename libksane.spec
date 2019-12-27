@@ -5,12 +5,12 @@
 
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	19.11.90
+Version:	19.12.0
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://www.kde.org
-Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	sane-devel
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Config)
