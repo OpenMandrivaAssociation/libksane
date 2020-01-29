@@ -6,7 +6,7 @@
 Summary:	A library for dealing with scanners
 Name:		libksane
 Version:	19.12.1
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://www.kde.org
