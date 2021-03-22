@@ -5,7 +5,7 @@
 
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	20.12.3
+Version:	21.03.80
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
@@ -44,6 +44,7 @@ LibKSane is a KDE interface for SANE library to control flat scanners.
 
 %files -n %{libname}
 %{_libdir}/libKF5Sane.so.%{major}*
+%{_libdir}/libKF5Sane.so.%(echo %{version} |cut -d. -f1)*
 
 #-----------------------------------------------------------------------------
 
