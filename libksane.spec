@@ -5,7 +5,7 @@
 
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	21.12.2
+Version:	22.03.80
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
