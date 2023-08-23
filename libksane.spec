@@ -5,7 +5,7 @@
 
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	23.04.3
+Version:	23.08.0
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
@@ -58,7 +58,6 @@ based on %{name}.
 
 %files  -n %{devname}
 %{_includedir}/KF5/KSane
-%{_includedir}/KF5/ksane_version.h
 %{_libdir}/cmake/KF5Sane
 %{_libdir}/*.so
 
