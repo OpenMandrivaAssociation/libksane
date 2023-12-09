@@ -65,7 +65,8 @@ based on %{name}.
 
 %prep
 %autosetup -p1
-%cmake_kde5
+%cmake_kde5 \
+	-DQT_MAJOR_VERSION=5
 
 %build
 %ninja -C build
