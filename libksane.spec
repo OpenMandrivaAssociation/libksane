@@ -18,7 +18,7 @@ BuildRequires:	cmake(KF5I18n)
 BuildRequires:	cmake(KF5Wallet)
 BuildRequires:	cmake(KF5WidgetsAddons)
 BuildRequires:	cmake(KF5TextWidgets)
-BuildRequires:	cmake(KSaneCore)
+BuildRequires:	cmake(KSaneCore) < 24.0.0
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Test)
