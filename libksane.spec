@@ -18,7 +18,7 @@ Version:	24.08.2
 Release:	%{?git:0.%{git}.}1
 Group:		System/Libraries
 License:	GPLv2
-Url:		http://www.kde.org
+Url:		https://www.kde.org
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/graphics/libksane/-/archive/%{gitbranch}/libksane-%{gitbranchd}.tar.bz2#/libksane-%{git}.tar.bz2
 %else
