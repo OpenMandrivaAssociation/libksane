@@ -1,5 +1,5 @@
 #define git 20240217
-%define gitbranch release/24.02
+%define gitbranch release/24.12
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 %define oldlibname %mklibname KF5Sane 5
@@ -14,7 +14,7 @@
 
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	24.08.3
+Version:	24.12.0
 Release:	%{?git:0.%{git}.}1
 Group:		System/Libraries
 License:	GPLv2
@@ -23,6 +23,10 @@ Url:		https://www.kde.org
 Source0:	https://invent.kde.org/graphics/libksane/-/archive/%{gitbranch}/libksane-%{gitbranchd}.tar.bz2#/libksane-%{git}.tar.bz2
 %else
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with qt5}
+# Qt 5 support was removed in 24.12.0
+Source1:	http://download.kde.org/%{stable}/release-service/24.08.3/src/%{name}-24.08.3.tar.xz
+%endif
 %endif
 BuildRequires:	sane-devel
 BuildRequires:	cmake(ECM)
@@ -129,10 +133,12 @@ based on %{name}.
 
 %if %{with qt5}
 cd ..
+tar xf %{S:1}
 export CMAKE_BUILD_DIR=build-qt5
 %cmake \
         -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
         -DQT_MAJOR_VERSION=5 \
+	../libksane-24.08.3 \
         -G Ninja
 %endif
 
