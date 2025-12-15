@@ -10,11 +10,9 @@
 %define libname %mklibname KSaneWidgets6
 %define devname %mklibname KSaneWidgets6 -d
 
-%bcond_without qt5
-
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	25.08.3
+Version:	25.12.0
 Release:	%{?git:0.%{git}.}1
 Group:		System/Libraries
 License:	GPLv2
@@ -23,24 +21,9 @@ Url:		https://www.kde.org
 Source0:	https://invent.kde.org/graphics/libksane/-/archive/%{gitbranch}/libksane-%{gitbranchd}.tar.bz2#/libksane-%{git}.tar.bz2
 %else
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with qt5}
-# Qt 5 support was removed in 24.12.0
-Source1:	http://download.kde.org/%{stable}/release-service/24.08.3/src/%{name}-24.08.3.tar.xz
-%endif
 %endif
 BuildRequires:	sane-devel
 BuildRequires:	cmake(ECM)
-%if %{with qt5}
-BuildRequires:	cmake(KF5Config)
-BuildRequires:	cmake(KF5I18n)
-BuildRequires:	cmake(KF5Wallet)
-BuildRequires:	cmake(KF5WidgetsAddons)
-BuildRequires:	cmake(KF5TextWidgets)
-BuildRequires:	cmake(KSaneCore)
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Widgets)
-BuildRequires:	pkgconfig(Qt5Test)
-%endif
 BuildRequires:  cmake(KF6Config)
 BuildRequires:  cmake(KF6I18n)
 BuildRequires:  cmake(KF6Wallet)
@@ -61,43 +44,12 @@ LibKSane is a KDE interface for SANE library to control flat scanner.
 
 #------------------------------------------------
 
-%package -n %{lib5name}
-Summary:	A library for dealing with scanners
-Group:		System/Libraries
-Provides:	ksane = %{EVRD}
-Requires:	%{name} = %{EVRD}
-%rename %{oldlibname}
-
-%description -n %{lib5name}
-LibKSane is a KDE interface for SANE library to control flat scanners.
-
-%files -n %{lib5name}
-%{_libdir}/libKF5Sane.so.*
-
-#-----------------------------------------------------------------------------
-
-%package -n %{dev5name}
-Summary:	Devel stuff for %{name}
-Group:		Development/KDE and Qt
-Requires:	sane-devel
-Requires:	%{lib5name} = %{EVRD}
-
-%description  -n %{dev5name}
-This package contains header files needed if you wish to build applications
-based on %{name}.
-
-%files  -n %{dev5name}
-%{_includedir}/KF5/KSane
-%{_libdir}/cmake/KF5Sane
-%{_libdir}/libKF5Sane.so
-
-#------------------------------------------------
-
 %package -n %{libname}
 Summary:	A library for dealing with scanners
 Group:		System/Libraries
 Provides:	ksane = %{EVRD}
 Requires:	%{name} = %{EVRD}
+Obsoletes:	%{lib5name} < %{EVRD}
 
 %description -n %{libname}
 LibKSane is a KDE interface for SANE library to control flat scanners.
@@ -112,6 +64,7 @@ Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
 Requires:	sane-devel
 Requires:	%{libname} = %{EVRD}
+Obsoletes:	%{dev5name} < %{EVRD}
 
 %description  -n %{devname}
 This package contains header files needed if you wish to build applications
@@ -131,26 +84,9 @@ based on %{name}.
         -DQT_MAJOR_VERSION=6 \
         -G Ninja
 
-%if %{with qt5}
-cd ..
-tar xf %{S:1}
-export CMAKE_BUILD_DIR=build-qt5
-%cmake \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-        -DQT_MAJOR_VERSION=5 \
-	../libksane-24.08.3 \
-        -G Ninja
-%endif
-
 %build
 %ninja_build -C build
-%if %{with qt5}
-%ninja_build -C build-qt5
-%endif
 
 %install
-%if %{with qt5}
-%ninja_install -C build-qt5
-%endif
 %ninja_install -C build
 %find_lang libksane
