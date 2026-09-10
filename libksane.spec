@@ -12,7 +12,7 @@
 
 Summary:	A library for dealing with scanners
 Name:		libksane
-Version:	26.08.0
+Version:	26.08.1
 Release:	%{?git:0.%{git}.}1
 Group:		System/Libraries
 License:	GPLv2
